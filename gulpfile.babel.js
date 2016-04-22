@@ -22,10 +22,11 @@ gulp.task('media', ()=>{
 	.pipe(gulp.dest('./build/'));
 });
 
-gulp.task('watch-changes', ['html', 'css', 'media'], browserSync.reload);
+gulp.task('watch-changes', ['build'], browserSync.reload);
 
+gulp.task('build', ['html', 'css', 'media']);
 
-gulp.task('default', ['html','css', 'media'], () => {
+gulp.task('default', ['build'], () => {
 	browserSync.init({
 		server: {
 			baseDir: "./build/"
