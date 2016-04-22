@@ -17,10 +17,15 @@ gulp.task('css', ()=>{
 	.pipe(gulp.dest('./build/'));
 });
 
-gulp.task('watch-changes', ['html', 'css'], browserSync.reload);
+gulp.task('media', ()=>{
+	return gulp.src(['./src/*.jpg', './src/*.pdf'])
+	.pipe(gulp.dest('./build/'));
+});
+
+gulp.task('watch-changes', ['html', 'css', 'media'], browserSync.reload);
 
 
-gulp.task('default', ['html','css'], () => {
+gulp.task('default', ['html','css', 'media'], () => {
 	browserSync.init({
 		server: {
 			baseDir: "./build/"
